@@ -1,7 +1,7 @@
 class AuthorsController < ApplicationController
     # skip_before_action :verify_authenticity_token
-    before_action :authenticate_request, except: [:add,:index, :find_articles_by_author]
-    before_action :set_user, only: [:update, :delete]
+    before_action :authenticate_request, except: [:add,:index, :update,:find_articles_by_author]
+    before_action :set_user, only: [:update , :delete]
     
      def index
         render json: Author.all
@@ -13,11 +13,20 @@ class AuthorsController < ApplicationController
      end
      
      def update
-        if Author.update(name: params[:name],bio: params[:bio],email: params[:email])
-            render html: "profile updated susccessfully"
-        else render html: "failed to update"
-        end
+        @author = Author.find(params[:id])
+        # if @current_user.id==@author.id
+          if params[:name]
+          @author.update(name: params[:name])
+          end
+          if params[:bio]
+          @author.update(bio: params[:bio])
+          end
+          if params[:email]
+            @author.update(email: params[:email])
+          end
+          render json: @author
     end
+
 
     def delete
         @delete=Author.find(params[:id])
