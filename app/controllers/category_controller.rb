@@ -1,6 +1,6 @@
 class CategoryController < ApplicationController
     # skip_before_action :verify_authenticity_token
-    before_action :authorize_request, except: :index
+    before_action :authorize_request, except: [:index , :add]
 
     def index
         @category=Category.all
