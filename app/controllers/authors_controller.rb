@@ -1,7 +1,8 @@
 class AuthorsController < ApplicationController
     # skip_before_action :verify_authenticity_token
-    before_action :authenticate_request, except: [:add,:index]
-    before_action :set_user, only: [:index, :delete]
+    before_action :authenticate_request, except: [:add,:index, :find_articles_by_author]
+    before_action :set_user, only: [:update, :delete]
+    
      def index
         render json: Author.all
      end
@@ -26,11 +27,11 @@ class AuthorsController < ApplicationController
     def set_user
         @author =Author.find(params[:id])
     end
-    
+
    
     def find_articles_by_author
-        @author=Author.find(params:[:id])
-        @article=Article.where(author_id: @author.id)
-       render json: @article
+        @author=Author.find(params[:id])
+        # @article=Article.where(author_id: @author.id)
+       render json: @author.articles
     end
 end

@@ -1,6 +1,6 @@
 class ArticleController < ApplicationController
-    skip_before_action :verify_authenticity_token
-    before_action :authorize_request, except: :index
+    # skip_before_action :verify_authenticity_token
+    before_action :authorize_request, except: [:index ,:find]
 
     def index
         render json: Article.all
@@ -26,7 +26,10 @@ class ArticleController < ApplicationController
           render html: "failed"
       end
     end
-
+  
+     def find
+      render json: Article.find(params[:id])
+     end
     
 
 end

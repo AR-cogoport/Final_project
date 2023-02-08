@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # articles
   get  "/articles" , to: "article#index"
+  get  "/articles/:id" , to: "article#find"
   post "/articles/add" , to: "article#add"
   put "/articles/update", to: "article#update"
   put "/articles/edit" , to: "article#edit"
@@ -25,9 +26,12 @@ Rails.application.routes.draw do
   #Authors
 
   get "/authors" , to: "authors#index"
+  get "/authors:id" , to: "authors#find"
   post "/authors/add" , to: "authors#add"
   delete "/authors/delete" , to: "authors#delete"
-  post "/authors/find_articles_by_author" , to: "authors#find_articles_by_author"
+  post "/authors/set_user" , to: "authors#set_user"
+  get "/authors/find_articles_by_author/:id" , to: "authors#find_articles_by_author"
+
 
   #  authentication jwt 
   resources :authors, param: :name
