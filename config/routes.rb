@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post "/articles/add" , to: "article#add"
   put "/articles/update/:id", to: "article#update"
   put "/articles/edit" , to: "article#edit"
-  delete "/articles/delete" , to: "article#delete"
+  delete "/articles/delete/:id" , to: "article#delete"
   get "/articles/find_all_cat/:id" , to: "article#find_all_cat"
 
   # Category
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get "/category" , to: "category#index"
   post "/category/add", to: "category#add"
   put "/category/update", to: "category#update"
-  delete "/category/delete/", to: "category#delete"
+  delete "/category/delete/:id", to: "category#delete"
 
   #Authors
 
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get "/authors:id" , to: "authors#find"
   post "/authors/add" , to: "authors#add"
   put "/authors/update/:id" , to: "authors#update"
-  delete "/authors/delete" , to: "authors#delete"
+  delete "/authors/delete/:id" , to: "authors#delete"
   post "/authors/set_user" , to: "authors#set_user"
   get "/authors/find_articles_by_author/:id" , to: "authors#find_articles_by_author"
 
