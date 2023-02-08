@@ -1,6 +1,6 @@
 class CategoryController < ApplicationController
     # skip_before_action :verify_authenticity_token
-    before_action :authorize_request, except: [:index , :add]
+    before_action :authorize_request, except: [:index , :add ,:find]
 
     def index
         @category=Category.all
@@ -23,6 +23,11 @@ class CategoryController < ApplicationController
     #     render html: 'category failed to be updated.'
     #     end
     #   end
+    def find
+      @category=Category.where(text: params[:text])
+      render json:@category
+    end
+
 
       def delete
         Category.find(params[:id]).destroy

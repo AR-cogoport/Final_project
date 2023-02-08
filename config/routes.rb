@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   post "/category/add", to: "category#add"
   put "/category/update", to: "category#update"
   delete "/category/delete/:id", to: "category#delete"
+  get "/category/find/:text", to: "category#find"
 
   #Authors
 
