@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   put "/articles/update", to: "article#update"
   put "/articles/edit" , to: "article#edit"
   delete "/articles/delete" , to: "article#delete"
+  get "/articles/find_all_cat/:id" , to: "article#find_all_cat"
 
   # Category
 
